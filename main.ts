@@ -45,13 +45,10 @@ let bias = 0
 let Speed = 0
 basic.showNumber(bitbot.getVersionCode())
 if (bitbot.getVersionCode() == 5) {
-    bitbot.writeEEROM(0, 0)
-    bitbot.writeEEROM(0, 1)
-    bitbot.writeEEROM(0, 2)
     bitbot.loadCalibration()
     Speed = 30
     basic.showNumber(Math.round(Speed / 10))
-    bias = 0
+    bias = bitbot.readEEROM(Speed / 30 - 1)
 } else {
     basic.showString("Wrong Version")
 }
